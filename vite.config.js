@@ -4,7 +4,7 @@ import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
   plugins: [vue()],
-  base: "/gh-pages/",
+  base: "/Test1Payment/",
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
