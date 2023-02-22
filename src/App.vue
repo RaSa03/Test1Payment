@@ -1,8 +1,8 @@
 <script setup>
 import SearchModal from "@/components/SearchModal.vue";
 import CarTable from "@/components/CarTable.vue";
-import SortModal from "@/components/SortModal.vue";
-import { onMounted, ref, computed } from "vue";
+
+import { onMounted, ref } from "vue";
 
 const URL = "https://my-json-server.typicode.com/RaSa03/FakeServer/cars?";
 const cars = ref([]);
@@ -40,17 +40,10 @@ onMounted(() => getCarsList());
 <template>
   <div class="container mt-5">
     <div class="row">
-      <button @click="getCarsList" type="button" class="btn btn-light col">
+      <button @click="getCarsList" type="button" class="btn btn-dark col">
         Весь список
       </button>
-      <button
-        type="button"
-        class="btn btn-secondary col"
-        data-bs-toggle="modal"
-        data-bs-target="#sortModal"
-      >
-        Сортировка
-      </button>
+
       <button
         type="button"
         class="btn btn-primary col"
@@ -60,10 +53,19 @@ onMounted(() => getCarsList());
         Поиск...
       </button>
     </div>
-    <CarTable :carsList="cars" />
-    <SortModal @sort="getCarsList" />
+    <CarTable @sort="getCarsList" :carsList="cars" />
     <SearchModal @search="searchWithParams" />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.col {
+  max-width: 300px;
+}
+.row {
+  margin-bottom: 50px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+}
+</style>
